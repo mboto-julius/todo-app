@@ -1,29 +1,5 @@
-# todo-app
-
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+# todo-list-app
+This is a sample application developed using Vue.js for the frontend. 
+It interacts with the backend by fetching data from an API built with Laravel. 
+The app demonstrates how to integrate Vue.js with Laravel to create a seamless and dynamic user experience. 
+The frontend is responsible for rendering the user interface and handling user interactions, while the Laravel API manages data retrieval, storage, and business logic.
