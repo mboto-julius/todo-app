@@ -12,22 +12,25 @@
                 title="Double click the text to edit or remove"
                 @dblclick="$event => isEdit = true"
             >
-                <div class="relative" v-if="isEdit">
-                    <input class="editable-task" 
-                        type="text" 
-                        v-focus
-                        @keyup.esc="undo" 
-                        @keyup.enter="updateTask"
-                        v-model="editingTask"
-                    />
-                </div>
-                <span v-else>{{ task.name }}</span>
+            <div class="relative" v-if="isEdit">
+                <input class="editable-task" 
+                    type="text" 
+                    v-focus
+                    @keyup.esc="undo" 
+                    @keyup.enter="updateTask"
+                    v-model="editingTask"
+                />
+            </div>
+            <span v-else>{{ task.name }}</span>
             </div>
             <div class="task-date">24 Feb 12:00</div>   
         </div>
 
         <!-- Task action i.e remove and edit action -->
-        <TaskActions @edit="$event => isEdit = true" v-show="!isEdit"/>
+        <TaskActions 
+            @edit="$event => isEdit = true" v-show="!isEdit"
+            @remove="removeTask"
+        />
 
     </li>
 </template>
@@ -41,7 +44,7 @@ const props = defineProps({
     task: Object
 })
 
-const emit = defineEmits(['updated', 'completed'])
+const emit = defineEmits(['updated', 'completed', 'removed'])
 
 const isEdit = ref(false)
 const editingTask = ref(props.task.name)
@@ -67,5 +70,10 @@ const markTaskAsCompleted = event => {
     emit('completed', updatedTask)
 }
 
+const removeTask = () => {
+    if(confirm("Are you sure?")) {
+        emit('removed', props.task)
+    }
+}
 
 </script>
