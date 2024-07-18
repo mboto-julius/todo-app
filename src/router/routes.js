@@ -2,6 +2,7 @@ import TasksPage from "@/pages/TasksPage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
 import RegisterPage from "@/pages/RegisterPage.vue";
 import SummaryPage from "@/pages/SummaryPage.vue";
+import ErrorPage from "@/pages/errors/ErrorPage.vue";
 
 const routes = [
     {
@@ -23,6 +24,11 @@ const routes = [
         path: "/summary",
         component: SummaryPage,
         name: 'summary'
+    },
+    {
+        path: "/:notFound(.*)",
+        name: 'error.404',
+        component: ErrorPage,
     }
 ]
 

@@ -1,5 +1,5 @@
 <template>
-    <div>
-        <h1>Login Page</h1>
+    <div class="text-center pt-5">
+        <h3>Login Page</h3>
     </div>
 </template>
