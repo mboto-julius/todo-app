@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://laravel-api.com/api/v1"
+    baseURL: import.meta.env.VITE_BASE_URL
 })
 
 export default api
