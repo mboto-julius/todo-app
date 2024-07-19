@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <div class="container py-2">
-            <router-link :to="{ name: 'tasks' }" class="navbar-brand">
+            <router-link :to="{ name: 'home' }" class="navbar-brand">
                 <span>Todo</span>
                 <strong>List</strong>
             </router-link>
