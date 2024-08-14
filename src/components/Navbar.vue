@@ -10,7 +10,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav" v-if="store.isLoggedIn">
                     <li class="nav-item">
                         <router-link :to="{ name: 'tasks' }" class="nav-link">Tasks</router-link>
                     </li>
@@ -19,17 +19,37 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'login' }" class="btn btn-outline-secondary ms-2">Login</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'register' }" href="#" class="btn btn-danger ms-2">Register</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="btn btn-outline-secondary ms-2">Logout</a>
-                    </li>
+                    <template v-if="!store.isLoggedIn">
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'login' }" class="btn btn-outline-secondary ms-2">Login</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'register' }" href="#" class="btn btn-danger ms-2">Register</router-link>
+                        </li>
+                    </template>
+                    <template v-else>
+                        <li class="nav-item">
+                            <a href="#" class="btn btn-outline-secondary ms-2" @click.prevent="logout">Logout</a>
+                        </li>
+                    </template>
                 </ul>
             </div>
         </div>
     </nav>
 </template>
+
+<script setup>
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+
+const router = useRouter()
+const store = useAuthStore()
+
+const logout = async () => {
+    await store.handleLogout()
+    router.push({
+        name: 'login'
+    })
+}
+
+</script>
