@@ -23,7 +23,7 @@
             </div>
             <span v-else>{{ task.name }}</span>
             </div>
-            <div class="task-date">24 Feb 12:00</div>   
+            <div class="task-date">{{ task.created_at }}</div>   
         </div>
 
         <!-- Task action i.e remove and edit action -->
